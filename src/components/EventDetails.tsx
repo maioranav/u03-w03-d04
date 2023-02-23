@@ -1,7 +1,9 @@
-import { Modal, Button } from "react-bootstrap";
+import { Modal, Button, Badge } from "react-bootstrap";
 import { EvDet } from "../interfaces/EvDet";
 
 export const EventDetails = (props: { event: null | EvDet; show: boolean; hide: Function }) => {
+  let publishDate: string = props.event !== null ? new Date(props.event.publishedAt).toDateString() : "";
+
   return (
     <>
       {props.event !== null && (
@@ -19,7 +21,8 @@ export const EventDetails = (props: { event: null | EvDet; show: boolean; hide: 
               <img src={props.event.imageUrl} className="w-100 mb-3" alt="Article" />
               <p>{props.event.summary} </p>
             </Modal.Body>
-            <Modal.Footer>
+            <Modal.Footer className="d-flex justify-content-between">
+              <Badge bg="secondary">Published: {publishDate !== "" ? publishDate : "N/A"}</Badge>
               <Button
                 variant="secondary"
                 onClick={() => {
