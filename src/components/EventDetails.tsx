@@ -22,7 +22,12 @@ export const EventDetails = (props: { event: null | EvDet; show: boolean; hide: 
               <p>{props.event.summary} </p>
             </Modal.Body>
             <Modal.Footer className="d-flex justify-content-between">
-              <Badge bg="secondary">Published: {publishDate !== "" ? publishDate : "N/A"}</Badge>
+              <div className="d-flex flex-column ">
+                <Badge bg="info" className="mb-2">
+                  Published: {publishDate !== "" ? publishDate : "N/A"}
+                </Badge>
+                <Badge bg="primary">Source: {props.event.newsSite}</Badge>
+              </div>
               <Button
                 variant="secondary"
                 onClick={() => {
